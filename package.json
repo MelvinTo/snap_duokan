@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+  	"jsdom": ">= 0.8.8",
+  	"request": ">= 2.27.0",
+  	"underscore":   ">= 1.5.2",
+  	"q":	">= 0.9.7"
+  }
+}
