@@ -3,12 +3,12 @@
 
 === 安装配置步骤 ===
 1. 安装[nodejs](http://nodejs.org)
-1. 运行npm install
-1. cd <脚本目录>
-1. cp config.js.sample config.js
-1. 打开config.js, 设置用户名密码
+2. 运行npm install
+3. cd <脚本目录>
+4. cp config.js.sample config.js
+5. 打开config.js, 设置用户名密码
 
 === 运行方法 ===
 1. cd <脚本目录>
-1. node duokan.js
+2. node duokan.js
 
