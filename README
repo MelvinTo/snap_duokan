@@ -1,7 +1,10 @@
 多看限免书自动抢拍脚本
+多看每天会放出一本限免书，这个脚本会自动购买当天的限免书，建议把运行命令放入cronjob，每天自动运行。
 
 === 安装配置步骤 ===
-1. 安装nodejs
+1. 安装[nodejs](http://nodejs.org)
+1. 运行npm install
+1. cd <脚本目录>
 1. cp config.js.sample config.js
 1. 打开config.js, 设置用户名密码
 

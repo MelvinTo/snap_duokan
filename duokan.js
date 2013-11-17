@@ -3,12 +3,13 @@ var http = require('http')
 var request = require('request')
 request = request.defaults({followRedirect: false})
 var _ = require('underscore');
-var keychain = require('keychain');
-var querystring = require('querystring')
-var prompt = require('prompt');
+
+// keychain is not used, because it doesn't support running in cron job mode.
+// var keychain = require('keychain');
+// var prompt = require('prompt');
 var Q = require('q');
 
-var app_title = "多看书抢拍器";
+var app_title = "多看抢拍器";
 var config = get_config_from_file();
 if(! config) {
   process.exit(1);
@@ -142,37 +143,37 @@ var toType = function(obj) {
   return ({}).toString.call(obj).match(/\s([a-zA-Z]+)/)[1].toLowerCase()
 }
 
-function get_config(type, hidden, description) {
-  var deferred = Q.defer()
+// function get_config(type, hidden, description) {
+//   var deferred = Q.defer()
 
-  keychain.getPassword({ account: type, service: app_title }, function(err, value) {
-    if(err && err.message === "Could not find password") {
-      var properties = [
-        {
-          name: type,
-          hidden: hidden,
-          description: description,
-        }
-      ];
+//   keychain.getPassword({ account: type, service: app_title }, function(err, value) {
+//     if(err && err.message === "Could not find password") {
+//       var properties = [
+//         {
+//           name: type,
+//           hidden: hidden,
+//           description: description,
+//         }
+//       ];
 
-      prompt.start();
-      prompt.get(properties, function (err, result) {
-        if (err) { 
-          console.log(err.message);
-          return;
-        }
-        console.log("Adding " + type + " into keychain");
-        keychain.setPassword({ account: type, service: app_title, password: result[type] });
-        deferred.resolve(result[type]);
-      });
-    } else {
-        deferred.resolve(value);
-    }
+//       prompt.start();
+//       prompt.get(properties, function (err, result) {
+//         if (err) { 
+//           console.log(err.message);
+//           return;
+//         }
+//         console.log("Adding " + type + " into keychain");
+//         keychain.setPassword({ account: type, service: app_title, password: result[type] });
+//         deferred.resolve(result[type]);
+//       });
+//     } else {
+//         deferred.resolve(value);
+//     }
 
-  });
+//   });
 
-  return deferred.promise;
-}
+//   return deferred.promise;
+// }
 
 function get_config_from_file() {
   var config = undefined;
