@@ -1,0 +1,9 @@
+var config = {};
+
+config.duokan = {
+// does not support native duokan account, only support xiaomi account
+  username : 'username of xiaomi account', 
+  password : 'enter password here in plain text'
+};
+
+module.exports = config;
