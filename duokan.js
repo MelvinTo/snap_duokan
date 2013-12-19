@@ -121,6 +121,10 @@ function get_real_book_url(url) {
     res.on('end', function() {
       var location = res.headers.location;
       // console.log("The original link of the book: " + location);
+      if(location.indexOf("http://") !== 0) {
+        location = "http://" + duokan_website + location;
+      } 
+
       deferred.resolve(location);
       //deferred.resolve("http://www.duokan.com/%E8%AF%91%E8%A8%80%C2%B7%E5%85%A8%E7%90%83%E4%B9%A6%E8%AF%84%EF%BC%88%E7%AC%AC16%E6%9C%9F%EF%BC%89/b/42386");
     })
@@ -294,7 +298,6 @@ function take_free_books(book, auth_info) {
 function get_book_name(url) {
 
   var deferred = Q.defer();
-
 	jsdom.env({
     url: url,
     scripts: [jquery_url],
